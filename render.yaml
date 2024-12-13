@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: zooom-car-marketplace
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 18.x
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        sync: false
+      - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
+        sync: false
+    autoDeploy: true
+    healthCheckPath: /api/health
+    disk:
+      name: tmp
+      mountPath: /tmp
+      sizeGB: 1
